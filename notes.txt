@@ -11,3 +11,7 @@ duck typing - if it walks like a duck and quacks like a duck, it must be a duck.
 ---------------
 In Python, unlike Java, getter and setter methods are not liked/used/favored? Since there is no concept of private members. Other argument for using getters/setters is that in future we may need to do some extra work in addition to getting/setting. But in Python you have the "Property" keyword which can make getters/setters look like regular attributes.
 ----------------
+Python disables "properties" and attributes on instances of Object class to save memory as it involves certain memory allocation even if no properties are created.
+
+On the same lines, if you want to restrict arbitrary attributes on your classes, use "Slots".
+----------------
