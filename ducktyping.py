@@ -61,3 +61,12 @@ class Ogg(MediaLoader):
     pass
 
 o = Ogg() # this is fine
+
+# we can implement MediaLoader without inheriting from it
+class Ogg1():
+    ext = '.ogg' 
+    def play(self):
+       print("this will play an ogg file")
+
+print(issubclass(Ogg1, MediaLoader))
+print(isinstance(Ogg1(), MediaLoader))
