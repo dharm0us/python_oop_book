@@ -1,0 +1,11 @@
+Wrapping your code in __name__ = "__main__" makes sure that that code runs only when the module is run as a script - python module.py and not when it's imported as a module.
+----------------
+So code structure is typically - methods go in classes, which go in modules which go in packages. Though you can define classes inside a method as well if it's meant not to be used outside that method.
+-------------
+Access control like private,protected etc:
+Python doesn't have it. If you prefix a variable with _ or __, it indicates that don't use these variables but nothing stops other modules from accessing them. With __, you can't access them directly - you have to deal with name mangling.
+-----------
+Use different environments for each project using python venv. To use different python versions, use "asdf" and use that python version to create the env.
+------------
+duck typing - if it walks like a duck and quacks like a duck, it must be a duck. Class/Type of an object is not as important as the methods it implements.
+---------------
