@@ -9,3 +9,5 @@ Use different environments for each project using python venv. To use different 
 ------------
 duck typing - if it walks like a duck and quacks like a duck, it must be a duck. Class/Type of an object is not as important as the methods it implements.
 ---------------
+In Python, unlike Java, getter and setter methods are not liked/used/favored? Since there is no concept of private members. Other argument for using getters/setters is that in future we may need to do some extra work in addition to getting/setting. But in Python you have the "Property" keyword which can make getters/setters look like regular attributes.
+----------------
