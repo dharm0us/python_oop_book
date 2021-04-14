@@ -15,3 +15,5 @@ Python disables "properties" and attributes on instances of Object class to save
 
 On the same lines, if you want to restrict arbitrary attributes on your classes, use "Slots".
 ----------------
+*list to unpack a sequence into individual elements.
+**dict to unpack a dict into key value arguments to a method.
