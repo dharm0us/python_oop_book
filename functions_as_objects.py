@@ -1,3 +1,17 @@
+################### using functions as attributes/monkey patching
+# replacing method of an object or a class
+class A: 
+    def print(self): 
+        print("my class is A") 
+ 
+def fake_print(): 
+    print("my class is not A") 
+ 
+a = A() 
+a.print() 
+a.print = fake_print 
+a.print() 
+
 def my_function():
     print("The Function Was Called")
 
