@@ -69,4 +69,4 @@ class Ogg1():
        print("this will play an ogg file")
 
 print(issubclass(Ogg1, MediaLoader))
-print(isinstance(Ogg1(), MediaLoader))
+print(isinstance(Ogg1(), MediaLoader))ls
