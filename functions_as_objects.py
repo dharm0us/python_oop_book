@@ -98,3 +98,5 @@ repeater = Repeater()
 timer.call_after(5, repeater.repeater) # a method can be used as callback too, just like a function
 format_time("Starting")
 timer.run()
+####################
+# Similarly an object can be used as a function if its class implements __call__ method
