@@ -55,3 +55,21 @@ Even though they use a similar syntax, coroutines don't normally follow the iter
 
 When called, the close() method will raise a GeneratorExit exception at the point the coroutine was waiting for a value to be sent in. It is normally good policy for coroutines to wrap their yield statements in a try...finally block so that any cleanup tasks (such as closing associated files or sockets) can be performed.
 '''
+
+'''
+The relationship between coroutines/generators/functions.
+
+We've seen coroutines in action, so now let's go back to that discussion of how they are related to generators. In Python, as is so often the case, the distinction is quite blurry. In fact, all coroutines are generator objects, and authors often use the two terms interchangeably. Sometimes, they describe coroutines as a subset of generators (only generators that return values from yield are considered coroutines). This is technically true in Python, as we've seen in the previous sections.
+
+However, in the greater sphere of theoretical computer science, coroutines are considered the more general principles, and generators are a specific type of coroutine. Further, normal functions are yet another distinct subset of coroutines.
+
+A coroutine is a routine that can have data passed in at one or more points and get it out at one or more points. In Python, the point where data is passed in and out is the yield statement.
+
+A function, or subroutine, is the simplest type of coroutine. You can pass data in at one point, and get data out at one other point when the function returns. While a function can have multiple return statements, only one of them can be called for any given invocation of the function.
+
+Finally, a generator is a type of coroutine that can have data passed in at one point, but can pass data out at multiple points. In Python, the data would be passed out at a yield statement, but you can't pass data back in. If you called send, the data would be silently discarded.
+
+So, in theory, generators are types of coroutines, functions are types of coroutines, and there are coroutines that are neither functions nor generators. That's simple enough, eh? So, why does it feel more complicated in Python?
+
+In Python, generators and coroutines are both constructed using a syntax that looks like we are constructing a function. But the resulting object is not a function at all; it's a totally different kind of object. Functions are, of course, also objects. But they have a different interface; functions are callable and return values, generators have data pulled out using next(), and coroutines have data pushed in using send.
+'''
