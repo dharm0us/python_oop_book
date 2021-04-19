@@ -106,3 +106,49 @@ with open(inputfile) as infile:
 # let's inspect it
 print(warnings_filter([]))
 print(dir(warnings_filter([]))) # notice that this has __iter__ and __next__ methods
+
+# yield from another iterator, notice the "from" keyword
+def warnings_filter_yielding_from_another_iterator(infilename):
+    with open(infilename) as infile:
+        yield from (
+            l.replace("\tWARNING", "") for l in infile if "WARNING" in l
+        )
+
+# yielding data from multiple iterators
+# walking a general tree, for e.g. a filesystem
+
+class File:
+    def __init__(self, name):
+        self.name = name
+
+class Folder(File):
+    def __init__(self, name):
+        super().__init__(name)
+        self.children = []
+
+root = Folder("")
+etc = Folder("etc")
+root.children.append(etc)
+etc.children.append(File("passwd"))
+etc.children.append(File("groups"))
+httpd = Folder("httpd")
+etc.children.append(httpd)
+httpd.children.append(File("http.conf"))
+var = Folder("var")
+root.children.append(var)
+log = Folder("log")
+var.children.append(log)
+log.children.append(File("messages"))
+log.children.append(File("kernel"))
+
+def walk(file):
+    if isinstance(file, Folder):
+        yield file.name + "/"
+        for f in file.children:
+            yield from walk(f)
+    else:
+        print(file.name)
+        yield file.name
+
+#print(*(node for node in walk(root)), sep="\n")
+print('\n'.join(node for node in walk(root)))
